@@ -1,0 +1,127 @@
+aside {
+    width: $aside_width;
+    height: 100%;
+    position: fixed;
+    padding: 12px 4px 8px;
+    border-right: 1px solid $faded_line;
+    background: $aside_background;
+    color: $aside_color;
+    text-align: center;
+
+    a {
+        color: $text_color;
+    }
+
+    .branding,
+    .actions .profile a span,
+    .actions .logout button span {
+        display: none;
+    }
+
+    .nav_links {
+        ul {
+            list-style: none;
+            list-style-position: inside;
+
+            li {
+                border-bottom: 1px solid $faded_line;
+                padding: 8px 4px;
+
+                a {
+                    display: grid;
+                    gap: 0.2em;
+                    grid-template-columns: 1fr;
+
+                    &:hover {
+                        color: blue;
+                    }
+
+                    i {
+                        @include font_size(1.2em, 1em);
+                    }
+
+                    span {
+                        @include font_size(0.4em, 1em);
+                    }
+                }
+            }
+
+            .active {
+                a {
+                    color: blue;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .actions {
+        position: absolute;
+        bottom: 2em;
+        width: 90%;
+        margin: auto;
+
+        .profile {
+            margin: 0 0 1em;
+        }
+
+        button {
+            width: 80%;
+            padding: 8px;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    aside {
+        text-align: left;
+        padding: 12px 8px 8px;
+
+        .branding,
+        .actions .profile a span,
+        .actions .logout button span {
+            display: block;
+        }
+
+        .branding {
+            margin: 0 0 2em;
+            padding: 12px;
+
+            a {
+                font-size: 1.2em;
+                font-weight: bold;
+            }
+        }
+
+        .nav_links {
+            ul {
+                li {
+                    a {
+                        grid-template-columns: 20px 1fr;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+
+        .actions {
+            .profile {
+                a {
+                    display: flex;
+                    gap: 0.6em;
+                    align-items: center;
+                    font-weight: bold;
+                }
+            }
+
+            button {
+                display: flex;
+                align-items: center;
+                gap: 0.4em;
+                justify-content: center;
+                width: 100%;
+                padding: 12px 24px;
+            }
+        }
+    }
+}

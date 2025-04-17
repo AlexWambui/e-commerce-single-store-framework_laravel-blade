@@ -1,0 +1,96 @@
+@import "guest";
+
+.Authentication {
+	min-height: 90dvh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.remember_me,
+	.forgot_password {
+		margin: 0 0 0.8em;
+	}
+
+	.extras {
+		margin: 2em 0 0;
+		text-align: center;
+
+		p {
+			margin: 0.6em 0 0;
+		}
+	}
+
+	.Login,
+	.Signup,
+	.ForgotPassword,
+	.ResetPassword,
+	.VerifyEmail {
+		width: 92dvw;
+		margin: auto;
+		padding: 16px;
+	}
+
+	.ForgotPassword,
+	.VerifyEmail {
+		.header {
+			margin: 0 0 2em;
+		}
+	}
+
+	.VerifyEmail {
+		.actions {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(120px, auto));
+			gap: 1em;
+
+			form {
+				&:last-of-type {
+					justify-self: flex-end;
+				}
+			}
+		}
+	}
+}
+
+.UserProfile {
+	.header {
+		padding: 16px;
+	}
+
+	.custom_form {
+		padding: 16px;
+		margin: 0 0 3.2em;
+
+		.actions {
+			margin: 2em 0;
+		}
+
+		form {
+			padding: 16px;
+		}
+	}
+
+	.update_profile {
+		.image_input {
+			margin: 0 0 1.5em;
+		}
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.Authentication {
+		.Login {
+			width: 30dvw;
+		}
+
+		.Signup {
+			width: 45dvw;
+		}
+
+		.ForgotPassword,
+		.ResetPassword,
+		.VerifyEmail {
+			width: 30dvw;
+		}
+	}
+}

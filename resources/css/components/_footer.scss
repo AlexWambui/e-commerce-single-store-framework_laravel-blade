@@ -1,0 +1,53 @@
+footer {
+	background: $footer_background;
+	color: $footer_color;
+	padding: 2rem 0;
+
+	a {
+		color: $footer_color;
+		font-weight: bold;
+	}
+
+	.container {
+		padding-bottom: 1em;
+		display: grid;
+		gap: 2em;
+
+		.branding {
+			.title {
+				font-size: 1.2rem;
+				font-weight: bold;
+			}
+
+			.address {
+				font-style: italic;
+			}
+		}
+
+		.links {
+			display: grid;
+		}
+
+		.contacts {
+			.socials {
+				display: flex;
+				gap: 1.2em;
+				margin: 1.2em 0 0;
+			}
+		}
+	}
+
+	.copyright {
+		padding: 1em 0 0;
+		border-top: 1px solid $faded_line;
+		text-align: center;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	footer {
+		.container {
+			grid-template-columns: 40% 1fr 1fr;
+		}
+	}
+}

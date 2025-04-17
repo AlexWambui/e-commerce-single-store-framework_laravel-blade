@@ -1,0 +1,419 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.container {
+  padding: 5px 5%;
+}
+
+.image {
+  border-radius: 8px;
+}
+.image img {
+  object-fit: cover;
+}
+
+img {
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.stacked {
+  display: grid;
+}
+
+.center {
+  text-align: center;
+}
+
+.text-danger {
+  color: #ff0000 !important;
+}
+
+aside {
+  width: 15%;
+  height: 100%;
+  position: fixed;
+  padding: 12px 4px 8px;
+  border-right: 1px solid grey;
+  background: #fff;
+  color: #000;
+  text-align: center;
+}
+aside a {
+  color: #000;
+}
+aside .branding,
+aside .actions .profile a span,
+aside .actions .logout button span {
+  display: none;
+}
+aside .nav_links ul {
+  list-style: none;
+  list-style-position: inside;
+}
+aside .nav_links ul li {
+  border-bottom: 1px solid grey;
+  padding: 8px 4px;
+}
+aside .nav_links ul li a {
+  display: grid;
+  gap: 0.2em;
+  grid-template-columns: 1fr;
+}
+aside .nav_links ul li a:hover {
+  color: blue;
+}
+aside .nav_links ul li a i {
+  font-size: 1.2em;
+}
+@media screen and (min-width: 726px) {
+  aside .nav_links ul li a i {
+    font-size: 1em;
+  }
+}
+aside .nav_links ul li a span {
+  font-size: 0.4em;
+}
+@media screen and (min-width: 726px) {
+  aside .nav_links ul li a span {
+    font-size: 1em;
+  }
+}
+aside .nav_links ul .active a {
+  color: blue;
+  font-weight: bold;
+}
+aside .actions {
+  position: absolute;
+  bottom: 2em;
+  width: 90%;
+  margin: auto;
+}
+aside .actions .profile {
+  margin: 0 0 1em;
+}
+aside .actions button {
+  width: 80%;
+  padding: 8px;
+}
+
+@media screen and (min-width: 1024px) {
+  aside {
+    text-align: left;
+    padding: 12px 8px 8px;
+  }
+  aside .branding,
+  aside .actions .profile a span,
+  aside .actions .logout button span {
+    display: block;
+  }
+  aside .branding {
+    margin: 0 0 2em;
+    padding: 12px;
+  }
+  aside .branding a {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  aside .nav_links ul li a {
+    grid-template-columns: 20px 1fr;
+    align-items: center;
+  }
+  aside .actions .profile a {
+    display: flex;
+    gap: 0.6em;
+    align-items: center;
+    font-weight: bold;
+  }
+  aside .actions button {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 24px;
+  }
+}
+button,
+a.btn {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+}
+button:hover,
+a.btn:hover {
+  background: black;
+}
+
+.btn_block {
+  width: 100%;
+}
+
+.btn_danger {
+  background: #ff0000 !important;
+  color: #fff;
+}
+
+.custom_form .header {
+  display: flex;
+  gap: 0.8em;
+  background: #000;
+  color: #fff;
+  padding: 8px 24px;
+  border-radius: 8px 8px 0 0;
+}
+.custom_form .header a {
+  color: lightblue !important;
+}
+.custom_form input,
+.custom_form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid grey;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s ease-in-out;
+  background: transparent;
+}
+.custom_form input:focus,
+.custom_form textarea:focus {
+  border-color: blue;
+}
+.custom_form label {
+  font-size: 1rem;
+}
+.custom_form label.required::after {
+  content: " * ";
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 1em;
+}
+.custom_form .inline_alert {
+  display: block;
+  font-weight: bold;
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+.custom_form .inputs,
+.custom_form .custom_inputs {
+  margin-bottom: 2.5rem;
+}
+.custom_form .inputs:last-of-type,
+.custom_form .custom_inputs:last-of-type {
+  margin-bottom: 2rem;
+}
+.custom_form .custom_inputs {
+  position: relative;
+  min-height: 3.5rem;
+}
+.custom_form .custom_inputs input:focus + label, .custom_form .custom_inputs input:not(:placeholder-shown) + label,
+.custom_form .custom_inputs textarea:focus + label,
+.custom_form .custom_inputs textarea:not(:placeholder-shown) + label {
+  top: -0.84rem;
+  left: 0rem;
+  font-size: 0.96rem;
+  color: blue;
+  padding: 0 0.4rem;
+  background: white;
+}
+.custom_form .custom_inputs label {
+  position: absolute;
+  left: 1rem;
+  top: 1.5em;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: 0.3s ease-in-out;
+}
+.custom_form button {
+  background: black;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+}
+
+@media screen and (min-width: 1024px) {
+  .custom_form .inputs_group,
+  .custom_form .inputs_group_3 {
+    display: grid;
+    gap: 0 1em;
+  }
+  .custom_form .inputs_group {
+    grid-template-columns: 1fr 1fr;
+  }
+  .custom_form .inputs_group_3 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+.table {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.table table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.table table thead {
+  background: #000;
+  color: #fff;
+}
+.table table thead th {
+  padding: 2px 4px;
+  font-size: 0.9em;
+  text-align: left;
+}
+.table table thead th:first-of-type {
+  border-radius: 4px 0 0 0;
+}
+.table table thead th:last-of-type {
+  border-radius: 0 4px 0 0;
+}
+.table table thead .center {
+  text-align: center;
+}
+.table table tbody tr {
+  border-bottom: 1px solid grey;
+}
+.table table tbody tr td {
+  padding: 4px;
+  font-size: 0.95em;
+}
+.table table tbody tr td p:not(:first-of-type),
+.table table tbody tr td div:not(:first-of-type) {
+  margin: 0.2em 0 0;
+}
+.table table tbody tr td img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.table table tbody tr .action_buttons {
+  display: flex;
+  gap: 0.8em;
+  justify-content: center;
+  align-items: center;
+}
+
+.notification {
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 10;
+}
+
+.notification-danger {
+  background: #ff0000;
+}
+
+.notification-success {
+  background: #008000;
+}
+
+.notification-status {
+  background: #49cefa;
+}
+
+.notification-warning {
+  background: #c28005;
+}
+
+.inline_alert {
+  margin: 0.1em 0 0;
+  color: #ff0000;
+}
+
+.inline_alert_success {
+  padding: 0.5em;
+  margin: 0.5em 0;
+  color: #008000;
+}
+
+.MainApp .app_content {
+  margin-left: calc(15% + 1rem);
+  padding: 4px 12px;
+  min-height: 100dvh;
+  height: auto;
+}
+.MainApp .app_content .app_header {
+  display: grid;
+  gap: 0.4em;
+  align-items: center;
+  margin: 0 0 0.8em;
+}
+.MainApp .app_content .app_header .details .title {
+  font-size: 1em;
+}
+.MainApp .app_content .app_header .details .stats {
+  display: flex;
+  gap: 0.4em;
+}
+.MainApp .app_content .app_header .details .stats span {
+  font-size: 0.75em;
+}
+.MainApp .app_content .app_header .details .stats span:not(:last-of-type)::after {
+  content: ".";
+  margin-left: 0.4em;
+  font-weight: bold;
+}
+.MainApp .app_content .app_header input {
+  padding: 6px 14px;
+  font-size: 1em;
+  border: 1px solid grey;
+  background: transparent;
+  border-radius: 32px;
+}
+.MainApp .app_content .app_header input::placeholder {
+  color: grey;
+  font-style: italic;
+}
+.MainApp .app_content .app_header .btn {
+  margin: 0.8em 0 0;
+}
+.MainApp .app_content .app_header .btn a {
+  background: #000;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1em;
+}
+.MainApp .app_content .app_header .btn a:hover {
+  opacity: 0.8;
+  box-shadow: 2px 2px 4px solid #000;
+  transition: all 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 1024px) {
+  .MainApp .app_header {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .MainApp .app_header .btn {
+    justify-self: right;
+  }
+}
+
+/*# sourceMappingURL=main-app.css.map */

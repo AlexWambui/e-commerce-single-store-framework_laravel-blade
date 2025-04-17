@@ -1,0 +1,112 @@
+.custom_form {
+    .header {
+        display: flex;
+        gap: 0.8em;
+        background: $elements_background;
+        color: $elements_color;
+        padding: 8px 24px;
+        border-radius: 8px 8px 0 0;
+
+        a {
+            color: lightblue!important;
+        }
+    }
+
+	input,
+	textarea {
+		width: 100%;
+		padding: 0.8rem;
+        font-size: 1rem;
+        border: 1px solid grey;
+        border-radius: 8px;
+        outline: none;
+        transition: 0.3s ease-in-out;
+        background: transparent;
+
+        &:focus {
+            border-color: blue;
+        }
+	}
+
+	label {
+		font-size: 1rem;
+	}
+
+	label.required {
+        &::after {
+            content: " * ";
+            color: $danger;
+            font-weight: bold;
+            font-size: 1em;
+        }
+    }
+
+	.inline_alert {
+        display: block;
+        font-weight: bold;
+        color: red;
+        font-size: 0.9rem;
+        margin-top: 0.3rem;
+    }
+
+	.inputs,
+	.custom_inputs {
+        margin-bottom: 2.5rem;
+
+        &:last-of-type {
+            margin-bottom: 2rem;
+        }
+	}
+
+	.custom_inputs {
+        position: relative;
+        min-height: 3.5rem;
+
+        input,
+        textarea {
+            &:focus + label,
+            &:not(:placeholder-shown) + label {
+                top: -0.84rem;
+                left: 0rem;
+                font-size: 0.96rem;
+                color: blue;
+                padding: 0 0.4rem;
+                background: white;
+            }
+        }
+
+        label {
+            position: absolute;
+            left: 1rem;
+            top: 1.5em;
+            transform: translateY(-50%);
+            pointer-events: none;
+            transition: 0.3s ease-in-out;
+        }
+    }
+
+    button {
+        background: black;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .custom_form {
+        .inputs_group,
+        .inputs_group_3 {
+            display: grid;
+            gap: 0 1em;
+        }
+
+        .inputs_group {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .inputs_group_3 {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+}

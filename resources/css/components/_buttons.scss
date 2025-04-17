@@ -1,0 +1,26 @@
+button,
+a.btn {
+	border: none;
+	outline: none;
+	font-size: 1rem;
+	cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background: $elements_background;
+    color: $elements_color;
+
+    &:hover {
+    	background: darken($elements_background, 10%);
+    }
+}
+
+.btn_block {
+	width: 100%;
+}
+
+.btn_danger {
+	background: $danger!important;
+	color: #fff;
+}

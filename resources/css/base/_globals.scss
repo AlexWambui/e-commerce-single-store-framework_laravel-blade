@@ -1,0 +1,42 @@
+@import "mixins";
+@import "variables";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+.container {
+	padding: $container_padding;
+}
+
+.image {
+	border-radius: 8px;
+
+	img {
+		object-fit: cover;
+	}
+}
+
+img {
+	object-fit: cover;
+	border-radius: 8px;
+}
+
+a {
+	text-decoration: none;
+}
+
+.stacked {
+	display: grid;
+}
+
+.center {
+	text-align: center;
+}
+
+.text-danger {
+	color: $danger!important;
+}

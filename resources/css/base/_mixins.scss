@@ -1,0 +1,15 @@
+@mixin desktop_only {
+    display: none;
+
+    @media screen and (min-width: 726px) {
+        display: block;
+    }
+}
+
+@mixin font_size($mobile, $desktop) {
+    font-size: $mobile;
+
+    @media screen and (min-width: 726px) {
+        font-size: $desktop;
+    }
+}

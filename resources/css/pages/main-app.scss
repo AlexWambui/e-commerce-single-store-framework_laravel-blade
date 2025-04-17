@@ -1,0 +1,84 @@
+@import "authenticated";
+
+.MainApp {
+    .app_content {
+        margin-left: calc($aside_width + 1rem);
+        padding: 4px 12px;
+        min-height: 100dvh;
+        height: auto;
+
+        .app_header {
+            display: grid;
+            gap: 0.4em;
+            align-items: center;
+            margin: 0 0 0.8em;
+
+            .details {
+                .title {
+                    font-size: 1em;
+                }
+
+                .stats {
+                    display: flex;
+                    gap: 0.4em;
+
+                    span {
+                        font-size: 0.75em;
+
+                        &:not(:last-of-type) {
+                            &::after {
+                                content: ".";
+                                margin-left: 0.4em;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+            }
+
+            input {
+                padding: 6px 14px;
+                font-size: 1em;
+                border: 1px solid $faded_line;
+                background: transparent;
+                border-radius:  32px;
+
+                &::placeholder {
+                    color: $faded_text;
+                    font-style: italic;
+                }
+            }
+
+            .btn {
+                margin: 0.8em 0 0;
+
+                a {
+                    background: $elements_background;
+                    color: $elements_color;
+                    padding: 6px 12px;
+                    border-radius: 4px; 
+                    font-weight: bold;
+                    font-size: 1em;
+
+                    &:hover {
+                        opacity: 0.8;
+                        box-shadow: 2px 2px 4px solid $elements_background;
+                        transition: all 0.3s ease-in-out;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .MainApp {
+        .app_header {
+            grid-template-columns: 1fr 1fr 1fr;
+
+            .btn {
+                justify-self: right;
+            }
+        }
+    }
+}

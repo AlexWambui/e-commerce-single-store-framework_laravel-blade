@@ -1,5 +1,5 @@
-@import "../base/globals";
+@use "../base/globals";
 
-@import "../components/components";
-@import "../components/navbar";
-@import "../components/footer";
+@use "../components/components";
+@use "../components/navbar";
+@use "../components/footer";

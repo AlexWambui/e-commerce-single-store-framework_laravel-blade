@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -34,15 +35,23 @@ a {
 }
 
 .text-danger {
-  color: #ff0000 !important;
+  color: #dc3545 !important;
+}
+
+.italicized {
+  font-style: italic;
+}
+
+.verified {
+  color: blue;
 }
 
 aside {
-  width: 15%;
+  width: 14%;
   height: 100%;
   position: fixed;
   padding: 12px 4px 8px;
-  border-right: 1px solid grey;
+  border-right: 1px solid #ccc;
   background: #fff;
   color: #000;
   text-align: center;
@@ -60,7 +69,7 @@ aside .nav_links ul {
   list-style-position: inside;
 }
 aside .nav_links ul li {
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #ccc;
   padding: 8px 4px;
 }
 aside .nav_links ul li a {
@@ -157,7 +166,7 @@ a.btn {
 }
 button:hover,
 a.btn:hover {
-  background: black;
+  background: scale(#000, 10%);
 }
 
 .btn_block {
@@ -165,8 +174,22 @@ a.btn:hover {
 }
 
 .btn_danger {
-  background: #ff0000 !important;
+  background: #dc3545 !important;
   color: #fff;
+}
+
+.custom_select {
+  background: transparent;
+}
+
+form input,
+form select,
+form textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid #ccc;
+  background: transparent;
 }
 
 .custom_form .header {
@@ -183,13 +206,8 @@ a.btn:hover {
 .custom_form input,
 .custom_form textarea {
   width: 100%;
-  padding: 0.8rem;
-  font-size: 1rem;
-  border: 1px solid grey;
   border-radius: 8px;
-  outline: none;
   transition: 0.3s ease-in-out;
-  background: transparent;
 }
 .custom_form input:focus,
 .custom_form textarea:focus {
@@ -200,7 +218,7 @@ a.btn:hover {
 }
 .custom_form label.required::after {
   content: " * ";
-  color: #ff0000;
+  color: #dc3545;
   font-weight: bold;
   font-size: 1em;
 }
@@ -248,6 +266,46 @@ a.btn:hover {
   border-radius: 8px;
 }
 
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-overlay .modal {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.modal-overlay .modal-title {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+.modal-overlay .form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.modal-overlay .form .form-input {
+  width: 100%;
+  border-radius: 4px;
+}
+.modal-overlay .form .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+.modal-overlay .form .error-text {
+  font-size: 0.875rem;
+  color: #dc3545;
+}
+
 @media screen and (min-width: 1024px) {
   .custom_form .inputs_group,
   .custom_form .inputs_group_3 {
@@ -262,55 +320,154 @@ a.btn:hover {
   }
 }
 .table {
+  width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
+.table .header {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.table .header .statistics .title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #000;
+  margin-bottom: 0.25rem;
+}
+.table .header .statistics .stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.table .header .statistics .stats span {
+  font-size: 0.95rem;
+  color: grey;
+}
+.table .header .statistics .stats span:not(:last-of-type)::after {
+  content: "•";
+  margin: 0 0.5rem;
+  color: #ccc;
+}
+.table .header .filters {
+  display: grid;
+  gap: 0.75rem;
+}
+.table .header .filters input,
+.table .header .filters select {
+  padding: 0.6rem 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 32px;
+  background-color: #fff;
+}
 .table table {
   width: 100%;
-  border-spacing: 0;
   border-collapse: collapse;
+  font-size: 0.95rem;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.table table th, .table table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: middle;
 }
 .table table thead {
-  background: #000;
+  background-color: #000;
   color: #fff;
 }
 .table table thead th {
-  padding: 2px 4px;
-  font-size: 0.9em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
   text-align: left;
 }
 .table table thead th:first-of-type {
-  border-radius: 4px 0 0 0;
+  border-top-left-radius: 8px;
 }
 .table table thead th:last-of-type {
-  border-radius: 0 4px 0 0;
+  border-top-right-radius: 8px;
 }
-.table table thead .center {
+.table table thead th.center {
+  text-align: center;
+}
+.table table thead th.actions {
   text-align: center;
 }
 .table table tbody tr {
-  border-bottom: 1px solid grey;
+  transition: background 0.3s ease;
+}
+.table table tbody tr:hover {
+  background-color: #f9fafb;
+}
+.table table tbody tr.strike td {
+  opacity: 0.5;
+  text-decoration: line-through;
 }
 .table table tbody tr td {
-  padding: 4px;
-  font-size: 0.95em;
+  font-size: 0.95rem;
+  color: #000;
 }
-.table table tbody tr td p:not(:first-of-type),
-.table table tbody tr td div:not(:first-of-type) {
-  margin: 0.2em 0 0;
-}
-.table table tbody tr td img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-}
-.table table tbody tr .action_buttons {
+.table table tbody tr .stacked {
   display: flex;
-  gap: 0.8em;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.table table tbody tr .stacked span {
+  line-height: 1.2;
+}
+.table table tbody tr .actions {
+  display: flex;
+  gap: 0.75rem;
   justify-content: center;
-  align-items: center;
+}
+.table table tbody tr .actions button {
+  background: transparent;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: color 0.2s ease;
+}
+.table table tbody tr .actions button.edit {
+  color: #008000;
+}
+.table table tbody tr .actions button.edit:hover {
+  color: scale(#008000, 10%);
+}
+.table table tbody tr .actions button.delete {
+  color: #dc3545;
+}
+.table table tbody tr .actions button.delete:hover {
+  color: scale(#dc3545, 10%);
+}
+.table .pagination {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.table .pagination nav {
+  display: flex;
+  gap: 0.5rem;
+}
+.table .pagination nav .page-link {
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
 }
 
+@media screen and (min-width: 1024px) {
+  .table .header {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .table .filters {
+    grid-template-columns: 2fr 1fr;
+  }
+  .table .actions {
+    justify-self: flex-end;
+  }
+}
 .notification {
   padding: 0.5em 1em;
   border-radius: 4px;
@@ -326,7 +483,7 @@ a.btn:hover {
 }
 
 .notification-danger {
-  background: #ff0000;
+  background: #dc3545;
 }
 
 .notification-success {
@@ -343,7 +500,7 @@ a.btn:hover {
 
 .inline_alert {
   margin: 0.1em 0 0;
-  color: #ff0000;
+  color: #dc3545;
 }
 
 .inline_alert_success {
@@ -353,67 +510,10 @@ a.btn:hover {
 }
 
 .MainApp .app_content {
-  margin-left: calc(15% + 1rem);
-  padding: 4px 12px;
+  margin-left: 14%;
+  padding: 12px 16px;
   min-height: 100dvh;
   height: auto;
-}
-.MainApp .app_content .app_header {
-  display: grid;
-  gap: 0.4em;
-  align-items: center;
-  margin: 0 0 0.8em;
-}
-.MainApp .app_content .app_header .details .title {
-  font-size: 1em;
-}
-.MainApp .app_content .app_header .details .stats {
-  display: flex;
-  gap: 0.4em;
-}
-.MainApp .app_content .app_header .details .stats span {
-  font-size: 0.75em;
-}
-.MainApp .app_content .app_header .details .stats span:not(:last-of-type)::after {
-  content: ".";
-  margin-left: 0.4em;
-  font-weight: bold;
-}
-.MainApp .app_content .app_header input {
-  padding: 6px 14px;
-  font-size: 1em;
-  border: 1px solid grey;
-  background: transparent;
-  border-radius: 32px;
-}
-.MainApp .app_content .app_header input::placeholder {
-  color: grey;
-  font-style: italic;
-}
-.MainApp .app_content .app_header .btn {
-  margin: 0.8em 0 0;
-}
-.MainApp .app_content .app_header .btn a {
-  background: #000;
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 1em;
-}
-.MainApp .app_content .app_header .btn a:hover {
-  opacity: 0.8;
-  box-shadow: 2px 2px 4px solid #000;
-  transition: all 0.3s ease-in-out;
-}
-
-@media screen and (max-width: 1024px) {
-  .MainApp .app_header {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-  .MainApp .app_header .btn {
-    justify-self: right;
-  }
 }
 
 /*# sourceMappingURL=main-app.css.map */

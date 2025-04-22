@@ -1,3 +1,5 @@
+@use "../base/variables" as *;
+
 button,
 a.btn {
 	border: none;
@@ -12,7 +14,7 @@ a.btn {
     color: $elements_color;
 
     &:hover {
-    	background: darken($elements_background, 10%);
+    	background: scale($elements_background, 10%);
     }
 }
 

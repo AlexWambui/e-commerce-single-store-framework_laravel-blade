@@ -1,5 +1,4 @@
-@import "mixins";
-@import "variables";
+@use 'variables' as *;
 
 * {
 	margin: 0;
@@ -39,4 +38,12 @@ a {
 
 .text-danger {
 	color: $danger!important;
+}
+
+.italicized {
+	font-style: italic;
+}
+
+.verified {
+	color: blue;
 }

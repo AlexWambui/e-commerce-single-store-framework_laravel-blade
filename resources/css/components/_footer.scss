@@ -1,3 +1,5 @@
+@use "../base/variables" as *;
+
 footer {
 	background: $footer_background;
 	color: $footer_color;

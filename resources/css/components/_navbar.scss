@@ -1,5 +1,6 @@
+@use "../base/variables" as *;
+
 nav {
-/*    *{outline: 1px solid red;}*/
     background: $navbar_background;
     color: $navbar_color;
     display: flex;

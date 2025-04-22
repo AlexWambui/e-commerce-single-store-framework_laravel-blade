@@ -1,3 +1,6 @@
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+
 aside {
     width: $aside_width;
     height: 100%;

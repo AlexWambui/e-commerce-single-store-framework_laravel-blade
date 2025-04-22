@@ -1,64 +1,190 @@
+@use "../base/variables" as *;
+
 .table {
+    width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 
+    .header {
+        display: grid;
+        gap: 1.5rem;
+        align-items: center;
+        margin-bottom: 1.5rem;
+
+        .statistics {
+            .title {
+                font-weight: 600;
+                font-size: 1.2rem;
+                color: $text_color;
+                margin-bottom: 0.25rem;
+            }
+
+            .stats {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+
+                span {
+                    font-size: 0.95rem;
+                    color: $faded_text;
+
+                    &:not(:last-of-type)::after {
+                        content: "•";
+                        margin: 0 0.5rem;
+                        color: $faded_line;
+                    }
+                }
+            }
+        }
+
+        .filters {
+            display: grid;
+            gap: 0.75rem;
+
+            input,
+            select {
+                padding: 0.6rem 1.2rem;
+                border: 1px solid $faded_line;
+                border-radius: 32px;
+                background-color: #fff;
+            }
+        }
+    }
+
     table {
         width: 100%;
-        border-spacing: 0;
         border-collapse: collapse;
+        font-size: 0.95rem;
+        background-color: $background_color;
+        border-radius: 8px;
+        overflow: hidden;
+
+        th, td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            vertical-align: middle;
+        }
 
         thead {
-            background: $elements_background;
+            background-color: $elements_background;
             color: $elements_color;
 
             th {
-                padding: 2px 4px;
-                font-size: 0.9em;
+                font-size: 0.85rem;
+                font-weight: 700;
+                text-transform: uppercase;
                 text-align: left;
 
                 &:first-of-type {
-                    border-radius: 4px 0 0 0;
+                    border-top-left-radius: 8px;
                 }
 
                 &:last-of-type {
-                    border-radius: 0 4px 0 0;
+                    border-top-right-radius: 8px;
                 }
-            }
 
-            .center {
-                text-align: center;
+                &.center {
+                    text-align: center;
+                }
+
+                &.actions {
+                    text-align: center;
+                }
             }
         }
 
         tbody {
             tr {
-                border-bottom: 1px solid $faded_line;
+                transition: background 0.3s ease;
+
+                &:hover {
+                    background-color: #f9fafb;
+                }
+
+                &.strike td {
+                    opacity: 0.5;
+                    text-decoration: line-through;
+                }
 
                 td {
-                    padding: 4px;
-                    font-size: 0.95em;
+                    font-size: 0.95rem;
+                    color: $text_color;
+                }
 
-                    p,
-                    div{
-                        &:not(:first-of-type) {
-                            margin: 0.2em 0 0;
-                        }
-                    }
+                .stacked {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.25rem;
 
-                    img {
-                        width: 30px;
-                        height: 30px;
-                        border-radius: 50%;
+                    span {
+                        line-height: 1.2;
                     }
                 }
 
-                .action_buttons {
+                .actions {
                     display: flex;
-                    gap: 0.8em;
+                    gap: 0.75rem;
                     justify-content: center;
-                    align-items: center;
+
+                    button {
+                        background: transparent;
+                        font-size: 0.9rem;
+                        padding: 0.25rem 0.5rem;
+                        border-radius: 4px;
+                        transition: color 0.2s ease;
+
+                        &.edit {
+                            color: $success;
+
+                            &:hover {
+                                color: scale($success, 10%);
+                            }
+                        }
+
+                        &.delete {
+                            color: $danger;
+
+                            &:hover {
+                                color: scale($danger, 10%);
+                            }
+                        }
+                    }
                 }
             }
         }
     }
+
+    .pagination {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: flex-end;
+
+        nav {
+            display: flex;
+            gap: 0.5rem;
+
+            .page-link {
+                border-radius: 6px;
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+    }
 }
+
+@media screen and (min-width: 1024px) {
+    .table {
+        .header {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .filters {
+            grid-template-columns: 2fr 1fr;
+        }
+
+        .actions {
+            justify-self: flex-end;
+        }
+    }
+}
+

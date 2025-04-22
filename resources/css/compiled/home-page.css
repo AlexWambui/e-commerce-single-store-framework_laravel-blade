@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -34,7 +35,15 @@ a {
 }
 
 .text-danger {
-  color: #ff0000 !important;
+  color: #dc3545 !important;
+}
+
+.italicized {
+  font-style: italic;
+}
+
+.verified {
+  color: blue;
 }
 
 button,
@@ -52,7 +61,7 @@ a.btn {
 }
 button:hover,
 a.btn:hover {
-  background: black;
+  background: scale(#000, 10%);
 }
 
 .btn_block {
@@ -60,8 +69,22 @@ a.btn:hover {
 }
 
 .btn_danger {
-  background: #ff0000 !important;
+  background: #dc3545 !important;
   color: #fff;
+}
+
+.custom_select {
+  background: transparent;
+}
+
+form input,
+form select,
+form textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid #ccc;
+  background: transparent;
 }
 
 .custom_form .header {
@@ -78,13 +101,8 @@ a.btn:hover {
 .custom_form input,
 .custom_form textarea {
   width: 100%;
-  padding: 0.8rem;
-  font-size: 1rem;
-  border: 1px solid grey;
   border-radius: 8px;
-  outline: none;
   transition: 0.3s ease-in-out;
-  background: transparent;
 }
 .custom_form input:focus,
 .custom_form textarea:focus {
@@ -95,7 +113,7 @@ a.btn:hover {
 }
 .custom_form label.required::after {
   content: " * ";
-  color: #ff0000;
+  color: #dc3545;
   font-weight: bold;
   font-size: 1em;
 }
@@ -143,6 +161,46 @@ a.btn:hover {
   border-radius: 8px;
 }
 
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-overlay .modal {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.modal-overlay .modal-title {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+.modal-overlay .form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.modal-overlay .form .form-input {
+  width: 100%;
+  border-radius: 4px;
+}
+.modal-overlay .form .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+.modal-overlay .form .error-text {
+  font-size: 0.875rem;
+  color: #dc3545;
+}
+
 @media screen and (min-width: 1024px) {
   .custom_form .inputs_group,
   .custom_form .inputs_group_3 {
@@ -157,55 +215,154 @@ a.btn:hover {
   }
 }
 .table {
+  width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
+.table .header {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.table .header .statistics .title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #000;
+  margin-bottom: 0.25rem;
+}
+.table .header .statistics .stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.table .header .statistics .stats span {
+  font-size: 0.95rem;
+  color: grey;
+}
+.table .header .statistics .stats span:not(:last-of-type)::after {
+  content: "•";
+  margin: 0 0.5rem;
+  color: #ccc;
+}
+.table .header .filters {
+  display: grid;
+  gap: 0.75rem;
+}
+.table .header .filters input,
+.table .header .filters select {
+  padding: 0.6rem 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 32px;
+  background-color: #fff;
+}
 .table table {
   width: 100%;
-  border-spacing: 0;
   border-collapse: collapse;
+  font-size: 0.95rem;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.table table th, .table table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: middle;
 }
 .table table thead {
-  background: #000;
+  background-color: #000;
   color: #fff;
 }
 .table table thead th {
-  padding: 2px 4px;
-  font-size: 0.9em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
   text-align: left;
 }
 .table table thead th:first-of-type {
-  border-radius: 4px 0 0 0;
+  border-top-left-radius: 8px;
 }
 .table table thead th:last-of-type {
-  border-radius: 0 4px 0 0;
+  border-top-right-radius: 8px;
 }
-.table table thead .center {
+.table table thead th.center {
+  text-align: center;
+}
+.table table thead th.actions {
   text-align: center;
 }
 .table table tbody tr {
-  border-bottom: 1px solid grey;
+  transition: background 0.3s ease;
+}
+.table table tbody tr:hover {
+  background-color: #f9fafb;
+}
+.table table tbody tr.strike td {
+  opacity: 0.5;
+  text-decoration: line-through;
 }
 .table table tbody tr td {
-  padding: 4px;
-  font-size: 0.95em;
+  font-size: 0.95rem;
+  color: #000;
 }
-.table table tbody tr td p:not(:first-of-type),
-.table table tbody tr td div:not(:first-of-type) {
-  margin: 0.2em 0 0;
-}
-.table table tbody tr td img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-}
-.table table tbody tr .action_buttons {
+.table table tbody tr .stacked {
   display: flex;
-  gap: 0.8em;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.table table tbody tr .stacked span {
+  line-height: 1.2;
+}
+.table table tbody tr .actions {
+  display: flex;
+  gap: 0.75rem;
   justify-content: center;
-  align-items: center;
+}
+.table table tbody tr .actions button {
+  background: transparent;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: color 0.2s ease;
+}
+.table table tbody tr .actions button.edit {
+  color: #008000;
+}
+.table table tbody tr .actions button.edit:hover {
+  color: scale(#008000, 10%);
+}
+.table table tbody tr .actions button.delete {
+  color: #dc3545;
+}
+.table table tbody tr .actions button.delete:hover {
+  color: scale(#dc3545, 10%);
+}
+.table .pagination {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.table .pagination nav {
+  display: flex;
+  gap: 0.5rem;
+}
+.table .pagination nav .page-link {
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
 }
 
+@media screen and (min-width: 1024px) {
+  .table .header {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .table .filters {
+    grid-template-columns: 2fr 1fr;
+  }
+  .table .actions {
+    justify-self: flex-end;
+  }
+}
 .notification {
   padding: 0.5em 1em;
   border-radius: 4px;
@@ -221,7 +378,7 @@ a.btn:hover {
 }
 
 .notification-danger {
-  background: #ff0000;
+  background: #dc3545;
 }
 
 .notification-success {
@@ -238,7 +395,7 @@ a.btn:hover {
 
 .inline_alert {
   margin: 0.1em 0 0;
-  color: #ff0000;
+  color: #dc3545;
 }
 
 .inline_alert_success {
@@ -248,7 +405,6 @@ a.btn:hover {
 }
 
 nav {
-  /*    *{outline: 1px solid red;}*/
   background: #fff;
   color: #000;
   display: flex;
@@ -404,7 +560,7 @@ footer .container .contacts .socials {
 }
 footer .copyright {
   padding: 1em 0 0;
-  border-top: 1px solid grey;
+  border-top: 1px solid #ccc;
   text-align: center;
 }
 

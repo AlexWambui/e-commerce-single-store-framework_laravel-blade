@@ -309,3 +309,7 @@ STOCKMOVEMENTYPE = [
     'adjustment'
 ];
 ```
+
+
+# Commands
+sass -w pages/authentication.scss:compiled/authentication.css pages/main-app.scss:compiled/main-app.css pages/home-page.scss:compiled/home-page.css pages/dashboard.scss:compiled/dashboard.css

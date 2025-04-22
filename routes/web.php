@@ -1,24 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Users\ManageUsers;
+use App\Http\Controllers\DashboardController;
 
 Route::view('/', 'general-pages.index')->name('home-page');
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('dashboard', 'dashboards.index')->name('dashboard');
+Route::middleware(['authenticated_user'])->group(function () {
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::view('/profile/edit', 'livewire.auth.edit-profile')->name('profile.edit');
+    Route::view('profile/edit', 'livewire.auth.edit-profile')->name('profile.edit'); 
+});
 
-    Route::get('/config/check-gd-driver-for-image-intervention', function () {
-        // Check if the GD and Imagick extensions are installed
-        $gd_installed = extension_loaded('gd');
-        $imagick_installed = extension_loaded('imagick');
-
-        return response()->json([
-            'gd_installed' => $gd_installed,
-            'imagick_installed' => $imagick_installed,
-        ]);
-    });
+Route::middleware(['admin_only'])->group(function() {
+    Route::get('users', ManageUsers::class)->name('users.index');
 });
 
 require __DIR__.'/auth.php';
+
+require __DIR__.'/configs.php';

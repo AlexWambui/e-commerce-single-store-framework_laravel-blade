@@ -8,9 +8,9 @@
             $navLinks = [
                 ['route' => 'dashboard', 'icon' => 'fas fa-home', 'text' => 'Dashboard'],
                 ['route' => 'orders.index', 'icon' => 'fas fa-truck-loading', 'text' => 'Orders'],
+                ['route' => 'product-reviews.index', 'icon' => 'fas fa-star', 'text' => 'Reviews'],
+                ['route' => 'messages.index', 'icon' => 'fas fa-comment', 'text' => 'Messages'],
                 ['route' => 'blogs.index', 'icon' => 'fas fa-blog', 'text' => 'Blogs'],
-                ['route' => 'product-reviews.index', 'icon' => 'fas fa-star', 'text' => 'Ratings'],
-                ['route' => 'comments.index', 'icon' => 'fas fa-comment', 'text' => 'Comments'],
                 ['route' => 'users.index', 'icon' => 'fas fa-users-cog', 'text' => 'Users'],
                 ['route' => 'products.index', 'icon' => 'fas fa-barcode', 'text' => 'Products'],
                 ['route' => 'locations.index', 'icon' => 'fas fa-map-marker-alt', 'text' => 'Locations'],

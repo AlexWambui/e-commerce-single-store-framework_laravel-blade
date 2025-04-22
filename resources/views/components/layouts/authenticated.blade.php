@@ -8,11 +8,11 @@
     <main {{ $attributes->merge(['class' => 'MainApp']) }}>
         @include('partials.aside')
 
-        <div class="app_content">
+        <section class="app_content">
             @include('partials.notifications')
             
             {{ $slot }}
-        </div>
+        </section>
     </main>
 
     <x-slot name="scripts">

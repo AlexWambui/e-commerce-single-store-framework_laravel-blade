@@ -32,16 +32,20 @@ a {
 	display: grid;
 }
 
-.center {
-	text-align: center;
-}
-
 .text-danger {
 	color: $danger!important;
 }
 
+.center {
+	text-align: center;
+}
+
 .italicized {
 	font-style: italic;
+}
+
+.bold {
+	font-weight: 600;
 }
 
 .verified {

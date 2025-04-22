@@ -15,6 +15,17 @@ return [
 
     'name' => env('APP_NAME', 'Aaqil Softwares'),
     'acronym' => 'A.S',
+    'email' => 'alexaaqil.se@gmail.com',
+    'phone_number' => '+254 746 055 487',
+    'secondary_phone_number' => '+254 745 744 261',
+    'country' => 'Kenya',
+    'locality' => 'Kiambu',
+    'address' => 'Ruii, Kiambu',
+    'pobox' => 'alexaaqil.se@gmail.com',
+    'whatsapp' => 'https://wa.me/254746055487',
+    'facebook' => '',
+    'twitter' => '',
+    'linkedin' => '',
 
     /*
     |--------------------------------------------------------------------------

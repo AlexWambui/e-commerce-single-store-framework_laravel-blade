@@ -10,10 +10,10 @@
 		</div>
 
 		<div class="stat">
-			<span>xxx</span>
+			<span>{{ $count_messages }}</span>
 			<span>
-				<a href="#">
-					xxx
+				<a href="{{ route('messages.index') }}">
+					{{ Str::plural('Message', $count_messages) }}
 				</a>
 			</span>
 		</div>

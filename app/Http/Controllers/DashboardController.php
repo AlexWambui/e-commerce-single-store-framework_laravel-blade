@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Message;
 
 class DashboardController extends Controller
 {
     public function index()
     {
         $count_users = User::count();
+        $count_messages = Message::count();
 
          // Simulated monthly sales data
         $sales_data = collect(range(1, 12))->map(fn () => rand(2000, 12000));
@@ -20,6 +22,7 @@ class DashboardController extends Controller
 
         return view('dashboards.index', compact(
             'count_users',
+            'count_messages',
 
             'sales_data',
             'locations_labels',

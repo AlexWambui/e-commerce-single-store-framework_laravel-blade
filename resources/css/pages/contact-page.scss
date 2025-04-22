@@ -1,0 +1,67 @@
+@use "guest";
+
+.contactpage {
+    min-height: 90dvh;
+    display: flex;
+    align-items: center;
+    
+    .container {
+        display: grid;
+        gap: 2em;
+        width: 90%;
+        margin: auto;
+
+        .contact_details {
+            padding: 16px 0 0;
+
+            .header {
+                margin: 0 0 2.5em;
+
+                h1 {
+                    margin: 0 0 0.5em;
+                    font-size: 1.84em;
+                }
+            }
+
+            .contact {
+                width: 60%;
+
+                p {
+                    line-height: 1.5;
+                    margin: 0.5em 0;
+                    font-size: 1.28em;
+                }
+
+                .details {
+                    display: grid;
+                    gap: 2em;
+
+                    .detail {
+                        display: grid;
+                        grid-template-columns: 35px 1fr;
+                        align-items: center;
+                        gap: 0.5em;
+
+                        p {
+                            display: grid;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .contactpage {
+        .container {
+            grid-template-columns: 1fr 1fr;
+
+            .contact_form {
+                padding: 16px;
+                width: 85%;
+                margin: auto;
+            }
+        }
+    }
+}

@@ -19,8 +19,8 @@
 
                     <select wire:model.defer="user_level" class="form-input">
                         <option value="">Select Role</option>
-                        @foreach (\App\Models\User::USERLEVELS as $key => $label)
-                            <option value="{{ $key }}">{{ ucfirst(str_replace('_', ' ', $label)) }}</option>
+                        @foreach (\App\Enums\UserLevel::labels() as $key => $label)
+                            <option value="{{ $key }}">{{ $label }}</option>
                         @endforeach
                     </select>
                     @error('user_level') <span class="error-text">{{ $message }}</span> @enderror
@@ -63,8 +63,8 @@
 
                 <select wire:model.live="filter_user_level" class="custom_select">
                     <option value="">All Roles</option>
-                    @foreach (\App\Models\User::USERLEVELS as $key => $label)
-                        <option value="{{ $key }}">{{ ucfirst(str_replace('_', ' ', $label)) }}</option>
+                    @foreach (\App\Enums\UserLevel::labels() as $key => $label)
+                        <option value="{{ $key }}">{{ $label }}</option>
                     @endforeach
                 </select>
             </div>

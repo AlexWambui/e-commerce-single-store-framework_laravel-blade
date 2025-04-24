@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
+use App\Enums\UserLevel;
+use App\Enums\UserStatus;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -50,22 +52,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'user_level' => 'integer',
-            'user_status' => 'integer',
+            'user_level' => UserLevel::class,
+            'user_status' => UserStatus::class,
         ];
     }
 
-    const USERLEVELS = [
-        0 => 'super_admin',
-        1 => 'admin',
-        2 => 'owner',
-        3 => 'customer',
-        4 => 'cashier',
-    ];
-
     public function getUserLevelLabelAttribute(): ?string
     {
-        return self::USERLEVELS[$this->user_level] ?? null;
+        return $this->user_level?->label();
     }
 
     public function hasRole(string|array $roles): bool
@@ -76,17 +70,21 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function isActive(): bool
     {
-        return $this->user_status == 1;
+        return $this->user_status == UserStatus::ACTIVE;
     }
 
     public function isSuperAdmin(): bool
     {
-        return $this->user_level_label === 'super_admin';
+        return $this->user_level == UserLevel::SUPERADMIN;
     }
 
     public function isAdmin(): bool
     {
-        return in_array($this->user_level_label, ['super_admin', 'admin', 'owner']);
+        return in_array($this->user_level, [
+            UserLevel::SUPERADMIN,
+            UserLevel::ADMIN,
+            UserLevel::OWNER,
+        ]);
     }
 
     public function getFullNameAttribute():string

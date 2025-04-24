@@ -17,7 +17,7 @@ class AdminMiddleware
     {
         $user = auth()->user();
 
-        if (!$user || !$user->hasRole(['admin', 'owner', 'super_admin'])) {
+        if (!$user || !$user->isAdmin()) {
             abort(403);
         }
 

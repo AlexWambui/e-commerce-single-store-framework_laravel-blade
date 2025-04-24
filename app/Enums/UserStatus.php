@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum UserLevel: int
+enum UserStatus: int
 {
     case INACTIVE = 0;
     case ACTIVE = 1;

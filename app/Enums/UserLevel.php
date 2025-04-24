@@ -8,6 +8,7 @@ enum UserLevel: int
     case ADMIN = 1;
     case OWNER = 2;
     case USER = 3;
+    case CASHIER = 4;
 
     public function label(): string
     {
@@ -16,11 +17,14 @@ enum UserLevel: int
             self::ADMIN => 'Admin',
             self::OWNER => 'Owner',
             self::USER => 'Customer',
+            self::CASHIER => 'Cashier',
         };
     }
 
     public static function labels(): array
     {
-        return array_column(array_map(fn($case) => [$case->value => $case->label()], self::cases()), null, 'value');
+        return collect(self::cases())->mapWithKeys(fn($case) => [
+            $case->value => $case->label(),
+        ])->toArray();
     }
 }
